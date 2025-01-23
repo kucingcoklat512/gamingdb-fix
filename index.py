@@ -18,11 +18,9 @@ def before_request():
     if request.path in excluded_routes:
         return None
     try:
-        verify_jwt_in_request()  # This validates the JWT in the request 
-    # Your existing JWT validation logic
-    token = request.headers.get('Authorization')
-    if not token or not validate_jwt_token(token):  # Replace with your JWT validation logic
-        return jsonify({"error": "Unauthorized"}), 401
+        verify_jwt_in_request()  # This validates the JWT in the request
+    except Exception as e:
+        return jsonify({"message": str(e)}), 401
 
 @app.route("/api/protected", methods=["GET"])
 @jwt_required()
