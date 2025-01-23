@@ -37,19 +37,6 @@ app.register_blueprint(platform_bp)
 app.register_blueprint(user_bp)
 app.register_blueprint(rating_bp)
 
-# Swagger configuration
-SWAGGER_URL = '/swagger'  # URL for accessing Swagger UI
-API_URL = '/static/swagger.json'  # Path to your Swagger JSON file
-
-swaggerui_blueprint = get_swaggerui_blueprint(
-    SWAGGER_URL,
-    API_URL,
-    config={'app_name': "GameList"}
-)
-
-# Register the blueprint
-app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
-
 db.create_all()
 # if __name__ == '__main__':
 #     db.create_all()
