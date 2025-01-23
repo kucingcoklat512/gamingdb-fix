@@ -14,7 +14,7 @@ jwt = JWTManager(app)
 
 @app.before_request
 def before_request():
-    excluded_routes = ['/api/login', '/api/users']
+    excluded_routes = ['/api/login', '/api/users', '/swagger']
     if request.path in excluded_routes:
         return None
     try:
