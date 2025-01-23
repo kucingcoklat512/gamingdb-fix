@@ -9,8 +9,8 @@
     ],
 "routes":[
     {
-    "src": "/static/(.*)",
-    "dest": "/static/$1"
+    "src": "/swagger.yaml",
+    "dest": "/swagger.yaml"
     },
     {"src":"/(.*)",
     "dest":"/"
