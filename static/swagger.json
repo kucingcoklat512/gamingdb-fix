@@ -5,7 +5,7 @@
     "description": "API documentation for the Gaming API",
     "version": "1.0.0"
   },
-  "host": "<your-api-url>",
+  "host": "https://gamingdb-fix.vercel.app/",
   "basePath": "/",
   "schemes": ["https"],
   "paths": {
