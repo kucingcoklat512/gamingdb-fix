@@ -1,0 +1,92 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Example API",
+      "version": "1.0.0",
+      "description": "This is an example API for demonstrating Swagger documentation.",
+      "contact": {
+        "name": "Support",
+        "email": "support@example.com"
+      }
+    },
+    "servers": [
+      {
+        "url": "https://api.example.com/v1",
+        "description": "Production server"
+      },
+      {
+        "url": "https://dev.api.example.com/v1",
+        "description": "Development server"
+      }
+    ],
+    "paths": {
+      "/users": {
+        "get": {
+          "summary": "Get all users",
+          "description": "Retrieve a list of all users.",
+          "responses": {
+            "200": {
+              "description": "A list of users.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/User"
+                    }
+                  },
+                  "example": [
+                    { "id": 1, "username": "john_doe", "email": "john@example.com" },
+                    { "id": 2, "username": "jane_doe", "email": "jane@example.com" }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "/users/{id}": {
+        "get": {
+          "summary": "Get a user by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "The ID of the user.",
+              "schema": { "type": "integer" }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The requested user.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  },
+                  "example": { "id": 1, "username": "john_doe", "email": "john@example.com" }
+                }
+              }
+            },
+            "404": {
+              "description": "User not found."
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "User": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "integer", "example": 1 },
+            "username": { "type": "string", "example": "john_doe" },
+            "email": { "type": "string", "example": "john@example.com" }
+          }
+        }
+      }
+    }
+  }
+  
